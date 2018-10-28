@@ -1,0 +1,21 @@
+
+.container-fluid {
+    padding: 15px 15px 15px 15px !important;
+}
+
+.contentWrap {
+    background-color: #005cbf;
+    height: 100vh;
+}
+
+.gameWrap {
+    padding-top: 80px;
+}
+
+.rounded {
+    border-radius:.5rem !important;
+}
+
+h1,h2,h3,h4,h5,h6,p,a {
+    color: #ffffff;
+}
