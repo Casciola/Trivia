@@ -1,10 +1,22 @@
 
+a {
+    font-size: 2rem;
+}
+
+body {
+    background-color: #000000;
+}
+
+.border-white {
+    border-width: 14px !important;
+}
+
 .container-fluid {
     padding: 15px 15px 15px 15px !important;
 }
 
 .contentWrap {
-    background-color: #005cbf;
+    background-color: #6495ed;
     height: 100vh;
 }
 
@@ -12,10 +24,15 @@
     padding-top: 80px;
 }
 
-.rounded {
-    border-radius:.5rem !important;
+h1 {
+    font-size: 4rem;
 }
 
 h1,h2,h3,h4,h5,h6,p,a {
     color: #ffffff;
+    font-family: "Snell Roundhand", cursive, sans-serif;
+}
+
+.rounded {
+    border-radius:.5rem !important;
 }
