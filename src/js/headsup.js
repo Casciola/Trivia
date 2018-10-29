@@ -17,6 +17,7 @@ var deviceOrientationStatus = DEVICE_ORIENTATION_UNKNOWN;
 var curPage = "";
 var curWordSet = 0;
 var curWord = 0;
+var audioLag = 500;
 
 
 var gamewords = [
@@ -49,37 +50,68 @@ function showPage(page) {
 function playGame(wordSet) {
     curPage = "menu";
     curWordSet = wordSet;
-    playSound($("#audioCategory"));
-    showPage("game")
-    setTimeout(function() { getReady(4)}, 3000)
+    loadSound("category");
+
+    playSound(function() {
+        showPage("game")
+        setTimeout(function () {
+            getReady(4)
+        }, 3000)
+    });
 }
 
 function getReady(n) {
-    $("#word").text(n > 3 ? "GET READY!" : n);
-
     if (n > 3)
-        playSound($("#audioGetReady"));
+        loadSound("getready");
     else if (n > 0)
-        playSound($("#audioCount"));
-    else
-        playSound($("#audioStart"));
+        loadSound("count");
+    else if (n == 0)
+        loadSound("start");
 
-    if (n > 0)
-        setTimeout(function() { getReady(n-1)}, n > 3 ? 2000 : 1000);
+    if (n > 0) {
+        playSound(function () {
+            $("#word").text(n > 3 ? "GET READY!" : n);
+            setTimeout(function () {
+                getReady(n - 1)
+            }, n > 3 ? 2000 - audioLag : 1000 - audioLag);
+        });
+    }
     else
-        startGame();
+        playSound(startGame);
 }
 
 function startGame() {
     $("#word").text(gamewords[curWordSet][curWord]);
 }
 
-var curPlayer = null;
-
-function playSound(player) {
-    if (curPlayer != null)
-        curPlayer.trigger('pause');
-    player.prop("currentTime", 0);
-    player.trigger("play");
-    curPlayer = player;
+function loadSound(sound) {
+    var player = document.getElementById("audioPlayer");
+    player.src="../audio/headsup-" + sound + ".mp3";
+    player.pause();
+    player.load();
 }
+
+function playSound(func) {
+    /*
+     var player = $("#audio_" + sound);
+     player.prop("currentTime", 0);
+     player.trigger('play');
+     */
+    var player = document.getElementById("audioPlayer");
+
+    //If the caller passes in a callback, play the sound and then call the callback after global audioLag milliseconds
+    if (func !== undefined && func != null) {
+        player.oncanplay = function () {
+            setTimeout(function () {
+                player.play();
+                func()
+            }, audioLag);
+        }
+    }
+    else
+        player.onloadeddata = function() { setTimeout(player.play(), audioLag)};
+}
+
+function myOnCanPlayFunction() { console.log('Can play'); }
+function myOnCanPlayThroughFunction() { console.log('Can play through'); }
+function myOnLoadedData() { console.log('Loaded data'); }

@@ -60,9 +60,10 @@
         </div>
     </div>
 </div>
-<audio id="audioCategory" preload="auto"><source src="../audio/headsup-category.mp3"></audio>
-<audio id="audioGetReady" preload="auto"><source src="../audio/headsup-getready.mp3"></audio>
-<audio id="audioCount" preload="auto"><source src="../audio/headsup-count.mp3"></audio>
-<audio id="audioStart" preload="auto"><source src="../audio/headsup-start.mp3"></audio>
+<audio id="audioPlayer" preload="auto" oncanplay="myOnCanPlayFunction()" oncanplaythrough="myOnCanPlayThroughFunction()" onloadeddata="myOnLoadedData()"><source src="../audio/headsup-category.mp3"></audio>
+<audio id="audio_category" preload="auto"><source src="../audio/headsup-category.mp3"></audio>
+<audio id="audio_getready" preload="auto"><source src="../audio/headsup-getready.mp3"></audio>
+<audio id="audio_count" preload="auto"><source src="../audio/headsup-count.mp3"></audio>
+<audio id="audio_start" preload="auto"><source src="../audio/headsup-start.mp3"></audio>
 </body>
 </html>
