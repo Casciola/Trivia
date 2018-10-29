@@ -8,7 +8,7 @@ body {
 }
 
 .border-white {
-    border-width: 14px !important;
+    border-width: 25px !important;
 }
 
 .container-fluid {
@@ -17,7 +17,7 @@ body {
 
 .contentWrap {
     background-color: #6495ed;
-    height: 100vh;
+    height: 90vh;
 }
 
 .gameWrap {
@@ -34,5 +34,5 @@ h1,h2,h3,h4,h5,h6,p,a {
 }
 
 .rounded {
-    border-radius:.5rem !important;
+    border-radius:5rem !important;
 }

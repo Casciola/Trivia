@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accelerometer Test</title>
+</head>
+<body>
+
+<div id="content">
+    <h1>Accelerometer Javascript Test</h1>
+    <ul>
+        <li>alpha: <span id="alpha"></span> </li>
+        <li>beta: <span id="beta"></span> </li>
+        <li>gamma: <span id="gamma"></span> </li>
+        <li>Trigger: <span id="trigger"></span></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", function(event) {
+            handleOrientationEvent(event.alpha, event.beta, event.gamma);
+        }, true);
+    }
+
+    var handleOrientationEvent = function(alpha, beta, gamma) {
+        document.getElementById("alpha").innerText = alpha;
+        document.getElementById("beta").innerText = beta;
+        document.getElementById("gamma").innerText = gamma;
+
+        var status = "";
+
+        if (Math.abs(beta) < 10 || Math.abs(beta) > 170) {
+            if (Math.abs(gamma) > 70)
+                status = "Flat/Ready";
+            else if (gamma < 0 && gamma > -50)
+                status = "Down";
+            else if (gamma > 0 && gamma < 50)
+                status = "Up";
+        }
+
+        document.getElementById("trigger").innerText = status;
+
+
+
+    };
+
+
+</script>
+
+</body>
+
+</html>
