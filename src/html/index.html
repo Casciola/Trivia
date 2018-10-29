@@ -5,12 +5,13 @@
     <title>Trivia</title>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-grid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-2.1.0.js"></script>
     <script src="../js/headsup.js"></script>
 </head>
-</head>
+
 <body>
 <div class="container-fluid">
     <div id="page_menu" class="contentWrap rounded border border-white">
@@ -47,17 +48,20 @@
             </div>
         </div>
     </div>
-    <div id="page_game" class="rounded contentWrap border border-white" style="display:none;">
-        <div class="row gameWrap">
-            <div class="col-12 text-center">
-                <h1 id="word">Place on forehead</h1>
+    <div id="page_game" class="rounded contentWrap border border-white hidden">
+        <div class="vertical-center">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 id="word">Place on forehead</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 id="timer">1:00</h2>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 text-center">
-                <h3 id="timer"></h3>
-            </div>
-        </div>
+
     </div>
 </div>
 <audio id="audioPlayer" preload="auto" oncanplay="myOnCanPlayFunction()" oncanplaythrough="myOnCanPlayThroughFunction()" onloadeddata="myOnLoadedData()"><source src="../audio/headsup-category.mp3"></audio>

@@ -21,7 +21,7 @@ var audioLag = 500;
 
 
 var gamewords = [
-    ["Word 1A", "Word 1B", "Word 1C","Word 1D", "Word 1E"],
+    ["Word1A + some words to span 2 lines", "Word 1B", "Word 1C","Word 1D", "Word 1E"],
     ["Word 2A", "Word 2B", "Word 2C","Word 2D", "Word 2E"],
     ["Word 3A", "Word 3B", "Word 3C","Word 3D", "Word 3E"],
     ["Word 4A", "Word 4B", "Word 4C","Word 4D", "Word 4E"],

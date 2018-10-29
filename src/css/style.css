@@ -28,11 +28,28 @@ h1 {
     font-size: 4rem;
 }
 
+h2 {
+    font-size: 3rem;
+}
+
 h1,h2,h3,h4,h5,h6,p,a {
     color: #ffffff;
-    font-family: "Snell Roundhand", cursive, sans-serif;
+    font-family: 'Nunito', sans-serif;
+}
+
+.hidden {
+    display: none;
 }
 
 .rounded {
     border-radius:5rem !important;
+}
+
+.vertical-center {
+    display: flex;
+    min-height: 77%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 77vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
