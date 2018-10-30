@@ -25,23 +25,14 @@ var timerInterval;
 
 /*
 
- Urgency
- Systemic Change
- Habit
- Care Management Process
- Social Norming
- Helping Hands
- ACC ECDP
- Total Cost of Care (TCC)
- Bystander
- Quadruple Aim
+
  */
 
 var gamewords = [
     ["Urgency", "Habit", "Social Norming","ACC ECDP", "Bystander"],
-    ["Systemic Change", "Care Management Process", "Helping Hands","Total Cost of Care (TCC)", "Quadruple Aim"],
-    ["Random Word 3A", "Another Word 3B", "Yet Another Word 3C","Even More Word 3D", "And Last But Not Least Word 3E"],
-    ["Random Word 4A", "Another Word 4B", "Yet Another Word 4C","Even More Word 4D", "And Last But Not Least Word 4E"],
+    ["BrOAD Market", "Leaders", "Paul","2nd Line", "PCP"],
+    ["Drive", "Jardiance at the Core", "Easy","Target patient", "Tipping Point"],
+    ["Systemic Change", "Care Management Process", "Helping Hands","Total Cost of Care (TCC)", "Quadruple Aim"]
 ];
 
 var handleOrientationEvent = function(alpha, beta, gamma) {
