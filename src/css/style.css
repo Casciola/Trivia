@@ -16,16 +16,33 @@ body {
 }
 
 .contentWrap {
-    background-color: #6495ed;
+    background-color: #10756f;
     height: 90vh;
 }
+
+.contentWrapCorrect {
+    background-color: #8fcdcc;
+    height: 90vh;
+}
+
+.contentWrapPass {
+    background-color: #ffdb2c;
+    height: 90vh;
+}
+
+.contentWrapGameOver {
+    background-color: #c95d5d;
+    height: 90vh;
+}
+
+
 
 .gameWrap {
     padding-top: 80px;
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 6rem;
 }
 
 h2 {

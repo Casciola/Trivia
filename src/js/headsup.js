@@ -18,7 +18,10 @@ var curPage = "";
 var curWordSet = 0;
 var curWord = 0;
 var audioLag = 500;
-
+var startTime = 0;
+var answers = [];
+var lastTimeLeft;
+var timerInterval;
 
 var gamewords = [
     ["Word1A + some words to span 2 lines", "Word 1B", "Word 1C","Word 1D", "Word 1E"],
@@ -71,6 +74,8 @@ function getReady(n) {
     if (n > 0) {
         playSound(function () {
             $("#word").text(n > 3 ? "GET READY!" : n);
+            $("#word").animate({"font-size":"8rem"}, 200);
+            $("#word").animate({"font-size":"6rem"}, 400);
             setTimeout(function () {
                 getReady(n - 1)
             }, n > 3 ? 2000 - audioLag : 1000 - audioLag);
@@ -81,7 +86,97 @@ function getReady(n) {
 }
 
 function startGame() {
+    answers = [];
     $("#word").text(gamewords[curWordSet][curWord]);
+    $("#timerDiv").show();
+    startTime = Date.now();
+    document.body.onkeydown = function(e) {
+        triggerKeyEvent(e.keyCode);
+    }
+    timerInterval = setInterval(updateCounter, 500);
+}
+
+function nextQuestion()
+{
+    console.log("in nextquestion");
+
+    if(answers.length >= gamewords[curWordSet].length) {
+        gameOver();
+    }
+    else {
+
+        loadSound("start");
+        playSound(function () {
+        });
+
+        $("#page_game").removeClass("contentWrapCorrect").removeClass("contentWrapPass").addClass("contentWrap");
+        $("#word").text(gamewords[curWordSet][answers.length]);
+
+        document.body.onkeydown = function (e) {
+            triggerKeyEvent(e.keyCode);
+        }
+    }
+}
+
+function gameOver() {
+    document.body.onkeydown = null;
+    clearInterval(timerInterval);
+
+    $("#page_game").removeClass("contentWrapCorrect").removeClass("contentWrapPass").removeClass("contentWrap").addClass("contentWrapGameOver");
+    $("#word").text("GAME OVER!")
+    $("#timerDiv").hide();
+
+    loadSound("gameover");
+    playSound(function(){});
+}
+
+function triggerKeyEvent(key) {
+    if (key != 38 && key != 40) return;
+
+    document.body.onkeydown = null;
+
+    if (key == 38) {    //up arrow
+        correct();
+    } else if (key == 40) { //down arrow
+        pass();
+    }
+}
+
+function correct() {
+    answers.push(true);
+    $("#page_game").removeClass("contentWrap").removeClass("contentWrapPass").addClass("contentWrapCorrect");
+    loadSound("correct");
+    playSound(function() {
+        setTimeout(nextQuestion, 1000);
+    });
+}
+
+function pass() {
+    answers.push(false);
+    $("#page_game").removeClass("contentWrap").removeClass("contentWrapCorrect").addClass("contentWrapPass");
+    loadSound("pass");
+    playSound();
+    playSound(function() {
+        setTimeout(nextQuestion, 1000);
+    });
+}
+
+function updateCounter() {
+    var timeLeft = 60 - Math.round((Date.now() - startTime) / 1000.0);
+    if (timeLeft < 60 && timeLeft >= 0) {
+        var timeString = "0:" + (timeLeft < 10 ? "0" : "") + timeLeft;
+        $("#timerText").text(timeString);
+    }
+
+    if (timeLeft <= 10 && timeLeft > 0 && timeLeft != lastTimeLeft) {
+        loadSound("count");
+        playSound(function(){});
+    }
+
+    lastTimeLeft = timeLeft;
+
+    if (timeLeft <= 0)
+        gameOver();
 }
 
 function loadSound(sound) {
@@ -109,7 +204,7 @@ function playSound(func) {
         }
     }
     else
-        player.onloadeddata = function() { setTimeout(player.play(), audioLag)};
+        player.onloadeddata = function() { setTimeout(function() { player.play() }, audioLag)};
 }
 
 function myOnCanPlayFunction() { console.log('Can play'); }
