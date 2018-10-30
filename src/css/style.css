@@ -15,9 +15,22 @@ body {
     padding: 15px 15px 15px 15px !important;
 }
 
+.contentWrapMenu {
+    background-color: #10756f;
+    height: 90vh;
+}
+
 .contentWrap {
     background-color: #10756f;
     height: 90vh;
+
+    old-background: repeating-linear-gradient(
+        45deg,
+        #159c98,
+        #159c98 1px,
+        #10756f 10px,
+        #10756f 20px
+    );
 }
 
 .contentWrapCorrect {
@@ -26,7 +39,8 @@ body {
 }
 
 .contentWrapPass {
-    background-color: #ffdb2c;
+    background-color: #fae37e;
+    old-background-color: #ffdb2c;
     height: 90vh;
 }
 
@@ -35,18 +49,20 @@ body {
     height: 90vh;
 }
 
-
-
 .gameWrap {
     padding-top: 80px;
 }
 
 h1 {
     font-size: 6rem;
+    font-weight: bold;
+    text-shadow: 3px 3px #333333;
 }
 
 h2 {
     font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 3px 3px #333333;
 }
 
 h1,h2,h3,h4,h5,h6,p,a {
