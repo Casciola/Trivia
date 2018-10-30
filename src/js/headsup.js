@@ -23,13 +23,25 @@ var answers = [];
 var lastTimeLeft;
 var timerInterval;
 
+/*
+
+ Urgency
+ Systemic Change
+ Habit
+ Care Management Process
+ Social Norming
+ Helping Hands
+ ACC ECDP
+ Total Cost of Care (TCC)
+ Bystander
+ Quadruple Aim
+ */
+
 var gamewords = [
-    ["Word1A + some words to span 2 lines", "Word 1B", "Word 1C","Word 1D", "Word 1E"],
-    ["Word 2A", "Word 2B", "Word 2C","Word 2D", "Word 2E"],
-    ["Word 3A", "Word 3B", "Word 3C","Word 3D", "Word 3E"],
-    ["Word 4A", "Word 4B", "Word 4C","Word 4D", "Word 4E"],
-    ["Word 5A", "Word 5B", "Word 5C","Word 5D", "Word 5E"],
-    ["Word 6A", "Word 6B", "Word 6C","Word 6D", "Word 6E"]
+    ["Urgency", "Habit", "Social Norming","ACC ECDP", "Bystander"],
+    ["Systemic Change", "Care Management Process", "Helping Hands","Total Cost of Care (TCC)", "Quadruple Aim"],
+    ["Random Word 3A", "Another Word 3B", "Yet Another Word 3C","Even More Word 3D", "And Last But Not Least Word 3E"],
+    ["Random Word 4A", "Another Word 4B", "Yet Another Word 4C","Even More Word 4D", "And Last But Not Least Word 4E"],
 ];
 
 var handleOrientationEvent = function(alpha, beta, gamma) {
