@@ -46,6 +46,18 @@ var handleOrientationEvent = function(alpha, beta, gamma) {
     }
 };
 
+window.addEventListener('load', registerEvents, false);
+
+function registerEvents() {
+    document.getElementById('body').addEventListener('click', getMenu, false);
+}
+
+function getMenu() {
+    document.getElementById('body').removeEventListener('click',getMenu,false);
+    document.getElementById('body').style.background = "#000000";
+    showPage('menu');
+}
+
 function showPage(page) {
     if (curPage != "")
         $("#page_" + curPage).hide();

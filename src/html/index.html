@@ -12,31 +12,26 @@
     <script src="../js/headsup.js"></script>
 </head>
 
-<body>
+<body id="body">
 <div class="container-fluid">
-    <div id="page_menu" class="contentWrapMenu rounded border border-white">
+    <!--<div id="page_loadingScreen">
+        <img src="../images/headsup_bg.jpg" class="headsUp_bg img-fluid" onclick="getMenu()" />
+    </div>-->
+    <div id="page_loadingScreen" class="bg"></div>
+    <div id="page_menu" class="contentWrapMenu rounded border border-white hidden">
         <br/>
         <div class="row">
             <div class="col-12 text-center">
                 <h2>Please select a category</h2>
             </div>
         </div>
-        <br/><br/>
-        <div class="row">
-            <div class="col-6 text-center">
-                <a href="javascript:playGame(0)">CARDs</a>
-            </div>
-            <div class="col-6 text-center">
-                <a href="javascript:playGame(1)">PCP/ENDO</a>
-            </div>
-        </div>
         <br/>
-        <div class="row">
-            <div class="col-6 text-center">
-                <a href="javascript:playGame(2)">Family</a>
-            </div>
-            <div class="col-6 text-center">
-                <a href="javascript:playGame(3)">Health Systems</a>
+        <div class="col-12 text-center">
+            <div class="btn-group-vertical">
+                <a href="javascript:playGame(0)" class="btn btn-warning btn-lg rounded" role="button">CARDs</a>
+                <a href="javascript:playGame(1)" class="btn btn-warning btn-lg rounded" role="button">PCP/ENDO</a>
+                <a href="javascript:playGame(2)" class="btn btn-warning btn-lg rounded" role="button">Family</a>
+                <a href="javascript:playGame(3)" class="btn btn-warning btn-lg rounded" role="button">Health Systems</a>
             </div>
         </div>
         <br/>

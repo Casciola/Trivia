@@ -1,14 +1,29 @@
 
 a {
     font-size: 2rem;
+    font-weight: 900;
 }
 
 body {
-    background-color: #000000;
+    height: 100vh;
+    background: url("../images/headsup_bg.jpg") no-repeat center center;
+    background-size: cover;
 }
 
 .border-white {
     border-width: 25px !important;
+}
+
+.btn-lg {
+    padding: .66rem 1rem;
+}
+
+.btn-warning {
+    background: #ffdf44 !important;
+    box-shadow: 3px 3px #333;
+    font-weight: 900;
+    margin-bottom: 10px;
+
 }
 
 .container-fluid {
@@ -17,11 +32,29 @@ body {
 
 .contentWrapMenu {
     background-color: #10756f;
+    background:
+            linear-gradient(27deg, #10756f 5px, transparent 5px) 0 5px,
+            linear-gradient(207deg, #10756f 5px, transparent 5px) 10px 0,
+            linear-gradient(27deg, #159c98 5px, transparent 5px) 0 10px,
+            linear-gradient(207deg, #159c98 5px, transparent 5px) 10px 5px,
+            linear-gradient(90deg, #117772 10px, transparent 10px),
+            linear-gradient(#10756f 25%, #10756f 25%, #10756f 50%, transparent 50%, transparent 75%, #159c98 75%, #159c98);
+    background-color: #10756f;
+    background-size: 20px 20px;
     height: 90vh;
 }
 
 .contentWrap {
     background-color: #10756f;
+    background:
+            linear-gradient(27deg, #10756f 5px, transparent 5px) 0 5px,
+            linear-gradient(207deg, #10756f 5px, transparent 5px) 10px 0,
+            linear-gradient(27deg, #159c98 5px, transparent 5px) 0 10px,
+            linear-gradient(207deg, #159c98 5px, transparent 5px) 10px 5px,
+            linear-gradient(90deg, #117772 10px, transparent 10px),
+            linear-gradient(#10756f 25%, #10756f 25%, #10756f 50%, transparent 50%, transparent 75%, #159c98 75%, #159c98);
+    background-color: #10756f;
+    background-size: 20px 20px;
     height: 90vh;
 
     old-background: repeating-linear-gradient(
