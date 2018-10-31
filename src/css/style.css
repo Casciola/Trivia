@@ -107,8 +107,27 @@ h1,h2,h3,h4,h5,h6,p,a {
     display: none;
 }
 
+#player_score {
+    font-size: 6rem;
+    font-weight: bold;
+}
+
 .rounded {
     border-radius:5rem !important;
+}
+
+.wordScore {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 3px 3px #333333;
+}
+
+.wordCorrect {
+    color: #ffffff;
+}
+
+.wordPass {
+    color: #999999;
 }
 
 .vertical-center {

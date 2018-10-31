@@ -113,8 +113,6 @@ function startGame() {
 
 function nextQuestion()
 {
-    console.log("in nextquestion");
-
     if(answers.length >= gamewords[curWordSet].length) {
         gameOver();
     }
@@ -143,7 +141,47 @@ function gameOver() {
 
     loadSound("gameover");
     playSound(function(){});
+
+    setTimeout(showScore, 5000);
 }
+
+function addScoreWord(x, correct)
+{
+    $("#player_score").text(correct);
+
+    var span = $(document.createElement("span"));
+    var br = $(document.createElement("br"));
+
+    span.text(gamewords[curWordSet][x]);
+    span.addClass("wordScore").addClass(answers[x] ? "wordCorrect" : "wordPass");
+
+    $("#player_cards").append(span).append(br);
+
+}
+
+function showScore()
+{
+    var correct = 0;
+
+    loadSound("fireworks");
+    playSound(function(){});
+
+    $("#player_cards").html("");
+
+    showPage("score");
+
+    for (var x = 0 ; x < gamewords[curWordSet].length ; x++)
+    {
+        var delay = x * 1400;
+
+        if (answers[x])
+            correct++;
+
+        setTimeout(addScoreWord, delay, x, correct);
+    }
+}
+
+
 
 function triggerKeyEvent(key) {
     if (key != 38 && key != 40) return;
@@ -222,6 +260,3 @@ function playSound(func) {
         player.onloadeddata = function() { setTimeout(function() { player.play() }, audioLag)};
 }
 
-function myOnCanPlayFunction() { console.log('Can play'); }
-function myOnCanPlayThroughFunction() { console.log('Can play through'); }
-function myOnLoadedData() { console.log('Loaded data'); }
