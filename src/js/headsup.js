@@ -157,8 +157,10 @@ function addScoreWord(x, correct)
 
     $("#player_score").text(correct);
 
-    if(answers[x])
-        $("#player_score").animate({"font-size":"8rem"}, 100).animate({"font-size":"6rem"}, 200);
+    if(answers[x]) {
+        $("#player_score").animate({"font-size": "8rem"}, 100).animate({"font-size": "6rem"}, 200);
+        $("#player_score_s").text(correct > 1 ? "S" : "");
+    }
 }
 
 function showScore()
@@ -174,7 +176,7 @@ function showScore()
 
     for (var x = 0 ; x < gamewords[curWordSet].length ; x++)
     {
-        var delay = (x + 1) * 1400;
+        var delay = (x + 1) * 1000;
 
         if (answers[x])
             correct++;
@@ -236,7 +238,7 @@ function updateCounter() {
 
 function loadSound(sound) {
     var player = document.getElementById("audioPlayer");
-    player.src="../audio/headsup-" + sound + ".mp3";
+    player.src="audio/headsup-" + sound + ".mp3";
     player.pause();
     player.load();
 }
