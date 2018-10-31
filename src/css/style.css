@@ -6,6 +6,10 @@ a {
 
 body {
     height: 100vh;
+    background-color: black;
+}
+
+.bodySplash {
     background: url("../images/headsup_bg.jpg") no-repeat center center;
     background-size: cover;
 }
@@ -35,10 +39,10 @@ body {
     background:
             linear-gradient(27deg, #10756f 5px, transparent 5px) 0 5px,
             linear-gradient(207deg, #10756f 5px, transparent 5px) 10px 0,
-            linear-gradient(27deg, #159c98 5px, transparent 5px) 0 10px,
-            linear-gradient(207deg, #159c98 5px, transparent 5px) 10px 5px,
+            linear-gradient(27deg, #127f76 5px, transparent 5px) 0 10px,
+            linear-gradient(207deg, #127f76 5px, transparent 5px) 10px 5px,
             linear-gradient(90deg, #117772 10px, transparent 10px),
-            linear-gradient(#10756f 25%, #10756f 25%, #10756f 50%, transparent 50%, transparent 75%, #159c98 75%, #159c98);
+            linear-gradient(#10756f 25%, #10756f 25%, #10756f 50%, transparent 50%, transparent 75%, #127f76 75%, #127f76);
     background-color: #10756f;
     background-size: 20px 20px;
     height: 90vh;
@@ -49,10 +53,10 @@ body {
     background:
             linear-gradient(27deg, #10756f 5px, transparent 5px) 0 5px,
             linear-gradient(207deg, #10756f 5px, transparent 5px) 10px 0,
-            linear-gradient(27deg, #159c98 5px, transparent 5px) 0 10px,
-            linear-gradient(207deg, #159c98 5px, transparent 5px) 10px 5px,
+            linear-gradient(27deg, #127f76 5px, transparent 5px) 0 10px,
+            linear-gradient(207deg, #127f76 5px, transparent 5px) 10px 5px,
             linear-gradient(90deg, #117772 10px, transparent 10px),
-            linear-gradient(#10756f 25%, #10756f 25%, #10756f 50%, transparent 50%, transparent 75%, #159c98 75%, #159c98);
+            linear-gradient(#10756f 25%, #10756f 25%, #10756f 50%, transparent 50%, transparent 75%, #127f76 75%, #127f76);
     background-color: #10756f;
     background-size: 20px 20px;
     height: 90vh;
