@@ -116,6 +116,10 @@ h1,h2,h3,h4,h5,h6,p,a {
     font-weight: bold;
 }
 
+#restartWrap {
+    padding-top: 50px;
+}
+
 .rounded {
     border-radius:5rem !important;
 }
