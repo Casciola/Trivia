@@ -151,9 +151,9 @@ function addScoreWord(x, correct)
     var br = $(document.createElement("br"));
 
     span.text(gamewords[curWordSet][x]);
-    span.addClass("wordScore").addClass(answers[x] ? "wordCorrect" : "wordPass");
+    span.addClass("wordScore").addClass(answers[x] ? "wordCorrect col-12 text-center" : "wordPass col-12 text-center");
 
-    $("#player_cards").append(span).append(br);
+    $("#player_cards").append(span);
 
     $("#player_score").text(correct);
 
