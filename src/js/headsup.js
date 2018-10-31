@@ -147,8 +147,6 @@ function gameOver() {
 
 function addScoreWord(x, correct)
 {
-    $("#player_score").text(correct);
-
     var span = $(document.createElement("span"));
     var br = $(document.createElement("br"));
 
@@ -157,6 +155,10 @@ function addScoreWord(x, correct)
 
     $("#player_cards").append(span).append(br);
 
+    $("#player_score").text(correct);
+
+    if(answers[x])
+        $("#player_score").animate({"font-size":"8rem"}, 100).animate({"font-size":"6rem"}, 200);
 }
 
 function showScore()
@@ -172,7 +174,7 @@ function showScore()
 
     for (var x = 0 ; x < gamewords[curWordSet].length ; x++)
     {
-        var delay = x * 1400;
+        var delay = (x + 1) * 1400;
 
         if (answers[x])
             correct++;
