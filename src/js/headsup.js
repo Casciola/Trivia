@@ -23,9 +23,7 @@ var answers = [];
 var lastTimeLeft;
 var timerInterval;
 var timeAllotted = 60;
-var lastSound = "";
-var inCountdown;
-var jsVersion = "v1.1";
+var jsVersion = "v2.0";
 
 
 var gamewords = [
@@ -50,17 +48,14 @@ var handleOrientationEvent = function(alpha, beta, gamma) {
 
 $(document).ready(function() {
     restart();
-    /*
-    lowLag.init({"urlPrefix":"audio/"}); //,"force":"audioTag"
-    lowLag.load(["headsup-gameover.mp3","headsup-gameover.ogg"],"gameover");
-    lowLag.play("gameover");
-    */
 });
 
 function restart() {
     curPage = "";
     answers = [];
-    inCountdown = false;
+
+    loadSound("sounds");
+    var player = document.getElementById("audioPlayer");
 
     $("#page_menu").hide();
     $("#page_game").hide();
@@ -71,7 +66,7 @@ function restart() {
     $("body").addClass("bodySplash");
     $("body").one("touchend", function() {
         $('body').removeClass("bodySplash");
-        showPage('menu');
+        showPage("menu");
     });
 
 }
@@ -92,12 +87,13 @@ function playGame(wordSet) {
     curWordSet = wordSet;
     loadSound("category");
 
-    playSound(function() {
-        showPage("game")
-        setTimeout(function () {
-            getReady(4)
-        }, 3000)
-    });
+    playSound();
+    showPage("game")
+    $("#word").text("Place on Forehead");
+
+    setTimeout(function () {
+        getReady(4)
+    }, 3000)
 }
 
 function updateGetReady(n) {
@@ -106,26 +102,23 @@ function updateGetReady(n) {
     $("#word").animate({"font-size":"6rem"}, 400);
     setTimeout(function () {
         getReady(n - 1)
-    }, n > 3 ? 2000 - audioLag : n == 1 ? 500 : 1000);
+    }, n > 3 ? 3000 : 1000);
 }
 
 function getReady(n) {
     if (n > 3)
         loadSound("getready");
-    else if (n > 2)
-        loadSound("10-seconds");
+    else if (n > 0)
+        loadSound("count"); //loadSound("10-seconds");
     else if (n == 0)
         loadSound("start");
 
-    if (n > 2) {
-        playSound(function () {
-            updateGetReady(n);
-        });
-    } else if (n > 0) {
+    playSound();
+
+    if (n > 0)
         updateGetReady(n);
-    }
     else if (n == 0)
-        playSound(startGame);
+        startGame();
 }
 
 var gestureInterval = null;
@@ -184,11 +177,8 @@ function nextQuestion()
         gameOver();
     }
     else {
-
         loadSound("start");
-        playSound(function () {
-            if (inCountdown) startCountdown();
-        });
+        playSound();
 
         $("#page_game").removeClass("contentWrapCorrect").removeClass("contentWrapPass").addClass("contentWrap");
         $("#word").text(gamewords[curWordSet][answers.length]);
@@ -211,7 +201,7 @@ function gameOver() {
     $("#timerDiv").hide();
 
     loadSound("gameover");
-    playSound(function(){});
+    playSound();
 
     setTimeout(showScore, 5000);
 }
@@ -239,7 +229,7 @@ function showScore()
     var correct = 0;
 
     loadSound("fireworks");
-    playSound(function(){});
+    playSound();
 
     $("#player_cards").html("");
 
@@ -274,9 +264,8 @@ function triggerKeyEvent(key) {
 function correct() {
     answers.push(true);
     loadSound("correct");
-    playSound(function() {
-        setTimeout(nextQuestion, 1000);
-    });
+    playSound();
+    setTimeout(nextQuestion, 1000);
     $("#page_game").removeClass("contentWrap").removeClass("contentWrapPass").addClass("contentWrapCorrect");
 }
 
@@ -285,15 +274,9 @@ function pass() {
     $("#page_game").removeClass("contentWrap").removeClass("contentWrapCorrect").addClass("contentWrapPass");
     loadSound("pass");
     playSound();
-    playSound(function() {
-        setTimeout(nextQuestion, 1000);
-    });
+    setTimeout(nextQuestion, 1000);
 }
 
-function startCountdown() {
-    loadSound("10-seconds");
-    playSound(function(){});
-}
 function updateCounter() {
 
     var millis = Date.now();
@@ -307,18 +290,11 @@ function updateCounter() {
 
     millis = millis % 1000;
 
-    if (!inCountdown && timeLeft <= 11 && millis >= 0 && millis <= 200) {
-        inCountdown = true;
-        startCountdown();
-    }
-
-    /*
-    if (timeLeft <= 10 && timeLeft > 0 && timeLeft != lastTimeLeft  && (timeLeft % 1000) < audioLag && timeLeft % 2 == 0) {
+    if (timeLeft <= 10 && timeLeft > 0 && timeLeft != lastTimeLeft  && (timeLeft % 1000) < 200) {
         lastTimeLeft = timeLeft;
         loadSound("count");
-        playSound(function(){});
+        playSound();
     }
-    */
 
     if (timeLeft == 0 && timeLeft != lastTimeLeft) {
         //Add current word to list as passed(false)
@@ -331,42 +307,51 @@ function updateCounter() {
     lastTimeLeft = timeLeft;
 }
 
+var soundDuration = 4800;
+var lastSoundTimeout = null;
+
 function loadSound(sound) {
     var player = document.getElementById("audioPlayer");
-    player.src="audio/headsup-" + sound + ".mp3";
+
+    if (lastSoundTimeout != null)
+        clearTimeout(lastSoundTimeout);
+
     player.pause();
-    player.load();
-    lastSound = sound;
+
+    switch(sound) {
+        case "category":
+            player.currentTime = 0; soundDuration = 4800;
+            break;
+        case "correct":
+            player.currentTime = 5; soundDuration = 4800;
+            break;
+        case "count":
+            player.currentTime = 10; soundDuration = 4800;
+            break;
+        case "gameover":
+            player.currentTime = 15; soundDuration = 4800;
+            break;
+        case "getready":
+            player.currentTime = 20; soundDuration = 4800;
+            break;
+        case "pass":
+            player.currentTime = 25; soundDuration = 4800;
+            break;
+        case "start":
+            player.currentTime = 30; soundDuration = 4800;
+            break;
+        case "fireworks":
+            player.currentTime = 35; soundDuration = 10000;
+            break;
+    }
 }
 
-function playSound(func, callbackOnly) {
-    /*
-     var player = $("#audio_" + sound);
-     player.prop("currentTime", 0);
-     player.trigger('play');
-     */
+function playSound()
+{
     var player = document.getElementById("audioPlayer");
-
-    if (func !== undefined && func != null) {
-        if (callbackOnly !== undefined && callbackOnly) {
-            setTimeout(func, audioLag);
-        } else {
-            player.oncanplay = function () {
-                player.oncanplay = null;
-                setTimeout(function () {
-                    player.play();
-                    func();
-                }, audioLag);
-            }
-        }
-    }
-    else {
-        player.oncanplay = function () {
-            setTimeout(function () {
-                player.play()
-            }, audioLag)
-        };
-    }
-
+    player.play();
+    lastSoundTimeout = setTimeout(function() {
+        player.pause();
+    }, soundDuration);
 }
 
