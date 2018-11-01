@@ -62,6 +62,7 @@ function restart() {
     $("#page_score").hide();
     $("#page_game").removeClass("contentWrapCorrect").removeClass("contentWrapPass").removeClass("contentWrapGameOver").addClass("contentWrap");
     $("#word").text("Place on Forehead")
+    $("#player_score").text("0");
 
     $("body").addClass("bodySplash");
     $("body").one("touchend", function() {
