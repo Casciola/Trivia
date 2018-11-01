@@ -25,6 +25,7 @@ var timerInterval;
 var timeAllotted = 60;
 var lastSound = "";
 var inCountdown;
+var jsVersion = "v1.1";
 
 
 var gamewords = [
@@ -48,11 +49,7 @@ var handleOrientationEvent = function(alpha, beta, gamma) {
 };
 
 $(document).ready(function() {
-    $("body").one("touchend", function() {
-        $('body').removeClass("bodySplash");
-        showPage('menu');
-    });
-
+    restart();
     /*
     lowLag.init({"urlPrefix":"audio/"}); //,"force":"audioTag"
     lowLag.load(["headsup-gameover.mp3","headsup-gameover.ogg"],"gameover");
@@ -60,6 +57,26 @@ $(document).ready(function() {
     */
 });
 
+function restart() {
+    curPage = "";
+    answers = [];
+    inCountdown = false;
+
+    $("#page_menu").hide();
+    $("#page_game").hide();
+    $("#page_score").hide();
+
+    $("body").addClass("bodySplash");
+    $("body").one("touchend", function() {
+        $('body').removeClass("bodySplash");
+        showPage('menu');
+    });
+
+}
+
+function showVersion() {
+    $("#version").text(jsVersion);
+}
 
 function showPage(page) {
     if (curPage != "")
@@ -87,7 +104,7 @@ function updateGetReady(n) {
     $("#word").animate({"font-size":"6rem"}, 400);
     setTimeout(function () {
         getReady(n - 1)
-    }, n > 3 ? 2000 - audioLag : 1000);
+    }, n > 3 ? 2000 - audioLag : n == 1 ? 500 : 1000);
 }
 
 function getReady(n) {

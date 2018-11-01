@@ -19,7 +19,7 @@
         <br/>
         <div class="row">
             <div class="col-12 text-center">
-                <h2>Please select a category</h2>
+                <h2 onclick="showVersion()">Please select a category</h2>
             </div>
         </div>
         <br/>
@@ -30,6 +30,8 @@
                 <a href="javascript:playGame(2)" class="btn btn-warning btn-lg rounded" role="button">Family</a>
                 <a href="javascript:playGame(3)" class="btn btn-warning btn-lg rounded" role="button">Health Systems</a>
             </div>
+            <br/>
+            <h4 id="version"></h4>
         </div>
         <br/>
     </div>
@@ -55,7 +57,7 @@
                 <h2>YOU GOT&nbsp;&nbsp;&nbsp;<span id="player_score">0</span>&nbsp;&nbsp;&nbsp;CARD<span id="player_score_s">S</span>!</h2>
             </div>
             <div id="restartWrap" class="col-2 hidden">
-                <button class="btn btn-warning rounded" onclick="location.reload()">Restart</button>
+                <button class="btn btn-warning rounded" onclick="restart()">Restart</button>
             </div>
         </div>
         <div class="col-12 text-center">
