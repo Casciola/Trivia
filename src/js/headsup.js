@@ -65,6 +65,8 @@ function restart() {
     $("#page_menu").hide();
     $("#page_game").hide();
     $("#page_score").hide();
+    $("#page_game").removeClass("contentWrapCorrect").removeClass("contentWrapPass").removeClass("contentWrapGameOver").addClass("contentWrap");
+    $("#word").text("Place on Forehead")
 
     $("body").addClass("bodySplash");
     $("body").one("touchend", function() {

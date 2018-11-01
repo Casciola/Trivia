@@ -59,14 +59,6 @@ body {
     background-color: #10756f;
     background-size: 20px 20px;
     height: 90vh;
-
-    old-background: repeating-linear-gradient(
-        45deg,
-        #159c98,
-        #159c98 1px,
-        #10756f 10px,
-        #10756f 20px
-    );
 }
 
 .contentWrapCorrect {
