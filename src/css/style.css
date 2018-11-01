@@ -63,17 +63,44 @@ body {
 
 .contentWrapCorrect {
     background-color: #8fcdcc;
+    background:
+            linear-gradient(27deg, #8fcdcc 5px, transparent 5px) 0 5px,
+            linear-gradient(207deg, #8fcdcc 5px, transparent 5px) 10px 0,
+            linear-gradient(27deg, #96CDC3 5px, transparent 5px) 0 10px,
+            linear-gradient(207deg, #96CDC3 5px, transparent 5px) 10px 5px,
+            linear-gradient(90deg, #94CDC8 10px, transparent 10px),
+            linear-gradient(#8fcdcc 25%, #8fcdcc 25%, #8fcdcc 50%, transparent 50%, transparent 75%, #96CDC3 75%, #96CDC3);
+    background-color: #8fcdcc;
+    background-size: 20px 20px;
     height: 90vh;
 }
 
 .contentWrapPass {
-    background-color: #fae37e;
+    background-color: #fae177;
+    background:
+            linear-gradient(27deg, #fae177 5px, transparent 5px) 0 5px,
+            linear-gradient(207deg, #fae177 5px, transparent 5px) 10px 0,
+            linear-gradient(27deg, #FAEC85 5px, transparent 5px) 0 10px,
+            linear-gradient(207deg, #FAEC85 5px, transparent 5px) 10px 5px,
+            linear-gradient(90deg, #FAE47B 10px, transparent 10px),
+            linear-gradient(#fae177 25%, #fae177 25%, #fae177 50%, transparent 50%, transparent 75%, #FAEC85 75%, #FAEC85);
+    background-color: #fae177;
+    background-size: 20px 20px;
     old-background-color: #ffdb2c;
     height: 90vh;
 }
 
 .contentWrapGameOver {
     background-color: #c95d5d;
+    background:
+            linear-gradient(27deg, #c95d5d 5px, transparent 5px) 0 5px,
+            linear-gradient(207deg, #c95d5d 5px, transparent 5px) 10px 0,
+            linear-gradient(27deg, #C96864 5px, transparent 5px) 0 10px,
+            linear-gradient(207deg, #C96864 5px, transparent 5px) 10px 5px,
+            linear-gradient(90deg, #C96060 10px, transparent 10px),
+            linear-gradient(#c95d5d 25%, #c95d5d 25%, #c95d5d 50%, transparent 50%, transparent 75%, #C96864 75%, #C96864);
+    background-color: #c95d5d;
+    background-size: 20px 20px;
     height: 90vh;
 }
 
@@ -117,6 +144,7 @@ h1,h2,h3,h4,h5,h6,p,a {
 
 #scoreHeader {
     border-bottom: 4px solid #ffffff;
+    overflow: visible;
 }
 
 .wordScore {
